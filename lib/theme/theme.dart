@@ -5,6 +5,7 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.fromSeed(
     seedColor: AppColors.primaryLightColor,
+    surface: AppColors.secondaryColor,
     brightness: Brightness.light,
   ),
   useMaterial3: true,
@@ -33,6 +34,7 @@ ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.fromSeed(
     seedColor: AppColors.primaryDarkColor,
+    secondary: AppColors.secondaryColor,
     brightness: Brightness.dark,
   ),
   useMaterial3: true,

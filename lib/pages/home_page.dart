@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:navigation/components/my_painter.dart';
+import 'package:navigation/models/grafo.dart';
+import 'package:navigation/pages/choose_where_go_toroute_page.dart';
 import 'package:navigation/theme/theme.dart';
 import 'package:navigation/theme/theme_provider.dart';
+import 'package:navigation/utils/monta_grafo.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,12 +20,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     ThemeData theme = Provider.of<ThemeProvider>(context).getThemeData;
 
-    Future<void> readQRCode() async {
-      String code = await FlutterBarcodeScanner.scanBarcode(
-          "#FFFFFF", "Cancelar", false, ScanMode.QR);
-      if (code != '-1') {
-        // colocar lógica aqui
-      }
+    navegar() async {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ChooseWhereRoutePage()),
+      );
     }
 
     final appBar = AppBar(
@@ -32,9 +34,9 @@ class _HomePageState extends State<HomePage> {
       ),
       actions: <Widget>[
         IconButton(
-          icon: const Icon(Icons.qr_code_scanner),
+          icon: const Icon(Icons.navigation),
           onPressed: () async {
-            await readQRCode();
+            await navegar();
           },
         ),
         IconButton(
@@ -54,14 +56,40 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           body: SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Image.asset(
-              'assets/images/mapa.png',
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
+            child: InteractiveViewer(
+              maxScale: 6,
+              child: SizedBox.expand(
+                  child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/planta_baixa_copia2.png',
+                    height: MediaQuery.of(context).size.height,
+                  ),
+                  CustomPaint(
+                    size: const Size(300, 300), // Tamanho do widget CustomPaint
+                    painter: MyPainter(),
+                  ),
+                ],
+              )),
             ),
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.navigation),
+        onPressed: () => calcula(),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+}
+
+calcula() {
+  Grafo campus = Grafo(163);
+  MontaGrafos builder = MontaGrafos();
+
+  builder.montaArestas(campus);
+  for (int bloco in campus.caminhoMinimo(0, 121)) {
+    print('bloco: $bloco');
   }
 }

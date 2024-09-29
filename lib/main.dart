@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/theme/theme_provider.dart';
-import 'package:navigation/ui/colors.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
-main() => runApp(
-      ChangeNotifierProvider(
-        create: (context) => ThemeProvider(),
-        child: const NavigationApp(),
-      ),
-    );
+main() => {
+      runApp(
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+          child: const NavigationApp(),
+        ),
+      )
+    };
 
 class NavigationApp extends StatelessWidget {
   const NavigationApp({super.key});
