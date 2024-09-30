@@ -266,6 +266,7 @@ class MontaGrafos {
     grafo.criaAresta(conexao_46, blocoH, 1);
     grafo.criaAresta(conexao_46, conexao_47, 2);
     grafo.criaAresta(conexao_47, conexao_48, 2);
+    grafo.criaAresta(conexao_47, conexao_55, 2);
     // Quando está no 48 está na frente do bloco Atelie Arq.
     grafo.criaAresta(conexao_48, atelieArq, 1);
     grafo.criaAresta(conexao_48, conexao_49, 2);
