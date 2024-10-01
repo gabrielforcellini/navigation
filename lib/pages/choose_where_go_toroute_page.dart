@@ -90,7 +90,8 @@ class _ChooseWhereRoutePageState extends State<ChooseWhereRoutePage> {
       body: body,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.navigation),
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => Navigator.pop(
+            context, {'blocoIni': blocoIni, 'blocoFim': blocoFim}),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

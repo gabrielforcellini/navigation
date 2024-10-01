@@ -1,5 +1,5 @@
 class Bloco {
-  final String id;
+  final int id;
   final String title;
   final String subtitle;
 

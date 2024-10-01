@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:navigation/components/my_painter.dart';
+import 'package:navigation/models/bloco.dart';
 import 'package:navigation/models/grafo.dart';
 import 'package:navigation/pages/choose_where_go_toroute_page.dart';
 import 'package:navigation/theme/theme.dart';
@@ -16,15 +17,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Bloco? blocoIni;
+  Bloco? blocoFim;
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Provider.of<ThemeProvider>(context).getThemeData;
 
     navegar() async {
-      Navigator.push(
+      // Aguardando o retorno de dados da segunda tela
+      final result = await Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const ChooseWhereRoutePage()),
       );
+
+      print('result: $result');
+      if (result != null) {
+        setState(() {
+          blocoIni = result['blocoIni'];
+          blocoFim = result['blocoFim'];
+        });
+        print('Bloco Inicial: ${blocoIni?.title}');
+        print('Bloco Final: ${blocoFim?.title}');
+        calcula(blocoIni!.id, blocoFim!.id);
+      }
     }
 
     final appBar = AppBar(
@@ -54,6 +69,7 @@ class _HomePageState extends State<HomePage> {
       appBar: appBar,
       body: Center(
         child: Scaffold(
+          backgroundColor: Colors.white,
           body: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: InteractiveViewer(
@@ -77,19 +93,19 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.navigation),
-        onPressed: () => calcula(),
+        onPressed: () => navegar(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
 
-calcula() {
-  Grafo campus = Grafo(163);
+calcula(int idBlocoInicial, int idBlocoFinal) {
+  Grafo campus = Grafo(164);
   MontaGrafos builder = MontaGrafos();
 
   builder.montaArestas(campus);
-  for (int bloco in campus.caminhoMinimo(0, 121)) {
+  for (int bloco in campus.caminhoMinimo(idBlocoInicial, idBlocoFinal)) {
     print('bloco: $bloco');
   }
 }

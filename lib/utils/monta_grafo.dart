@@ -127,7 +127,6 @@ class MontaGrafos {
   final int blocoXXIC = 123;
   final int blocoApoio = 124;
   final int blocoZ = 125;
-  final int blocoNO = 125;
   final int atelieArq = 126;
   final int conexao_101 = 127;
   final int conexao_102 = 128;
@@ -165,6 +164,7 @@ class MontaGrafos {
   final int ginasio = 160;
   final int restaurante = 161;
   final int clinicasIntegradas = 162;
+  final int blocoNO = 163;
 
   /// Define as arestas (caminhos) entre os vértices (blocos)
   Grafo montaArestas(Grafo grafo) {
