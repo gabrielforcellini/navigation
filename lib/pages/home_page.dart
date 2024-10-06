@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:navigation/components/my_painter.dart';
+import 'package:navigation/mocks/blocos.dart';
 import 'package:navigation/models/bloco.dart';
 import 'package:navigation/models/grafo.dart';
 import 'package:navigation/pages/choose_where_go_toroute_page.dart';
@@ -19,6 +20,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Bloco? blocoIni;
   Bloco? blocoFim;
+  List<int> caminho = [];
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Provider.of<ThemeProvider>(context).getThemeData;
@@ -38,7 +41,11 @@ class _HomePageState extends State<HomePage> {
         });
         print('Bloco Inicial: ${blocoIni?.title}');
         print('Bloco Final: ${blocoFim?.title}');
-        calcula(blocoIni!.id, blocoFim!.id);
+        setState(
+          () {
+            caminho = calcula(blocoIni!.id, blocoFim!.id);
+          },
+        );
       }
     }
 
@@ -83,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   CustomPaint(
                     size: const Size(300, 300), // Tamanho do widget CustomPaint
-                    painter: MyPainter(),
+                    painter: MyPainter(caminho),
                   ),
                 ],
               )),
@@ -101,11 +108,12 @@ class _HomePageState extends State<HomePage> {
 }
 
 calcula(int idBlocoInicial, int idBlocoFinal) {
-  Grafo campus = Grafo(164);
+  Grafo campus = Grafo(165);
   MontaGrafos builder = MontaGrafos();
 
   builder.montaArestas(campus);
   for (int bloco in campus.caminhoMinimo(idBlocoInicial, idBlocoFinal)) {
     print('bloco: $bloco');
   }
+  return campus.caminhoMinimo(idBlocoInicial, idBlocoFinal);
 }

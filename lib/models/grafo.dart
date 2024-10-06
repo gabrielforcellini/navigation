@@ -71,8 +71,7 @@ class Grafo {
     // Define que todos os outros vertices, diferentes do nó origem têm peso infinito.
     for (int v = 0; v < vertices.length; v++) {
       if (v != noOrigem) {
-        custo[v] =
-            0x7FFFFFFFFFFFFFFF; // Simboliza o infinito. https://stackoverflow.com/questions/50429660/is-there-a-constant-for-max-min-int-double-value-in-dart
+        custo[v] = 0x7FFFFFFFFFFFFFFF; // Simboliza o infinito.
       }
       antecessor[v] = indefinido;
       naoVisitados.add(v);
