@@ -207,7 +207,99 @@ class MyPainter extends CustomPainter {
   final con3233 = [const Offset(201, 508.50), const Offset(201, 459.19)];
 
   // Linha entre CON 4 (ADMINISTRATIVO) -> CON 6
-  final con0406 = [const Offset(138, 202), const Offset(135.7, 302.5)];
+  final con0406 = [const Offset(137.21, 234.27), const Offset(135.7, 302.5)];
+
+  // CON 26 -> XXIB
+  final con26XXIB = [
+    const Offset(141.85, 576.69),
+    const Offset(139.70, 550.82)
+  ];
+
+  // CON 13 -> XXIA
+  final con13XXIA = [
+    const Offset(140.42, 469.80),
+    const Offset(136.28, 502.83)
+  ];
+
+  // CON 12 -> BLOCO ESTUDANTE
+  final con12ESTUD = [
+    const Offset(139.87, 431.84),
+    const Offset(181.98, 439.69)
+  ];
+
+  // CON 33 -> BLOCO ESTUDANTE
+  final con33ESTUD = [const Offset(201, 459.19), const Offset(181.98, 439.69)];
+
+  // CON 41 -> N/O
+  final con41NO = [const Offset(327.84, 472.52), const Offset(326, 486.53)];
+
+  // CON 63 -> N/O
+  final con63NO = [const Offset(290, 478.83), const Offset(326, 485)];
+
+  // CON 61 -> CON 34
+  final con6134 = [const Offset(291.98, 451.54), const Offset(237.70, 444.11)];
+
+  // CON 43 -> BLOCO K
+  final con43K = [const Offset(332.26, 436.54), const Offset(347.40, 439.69)];
+
+  // CON 43 -> BLOCO M
+  final con43M = [const Offset(332.26, 436.54), const Offset(311.40, 434.25)];
+
+  // CON 60 -> BLOCO M
+  final con60M = [const Offset(296.5, 432.27), const Offset(311.40, 434.25)];
+
+  // CON 60 -> BLOCO L
+  final con60L = [const Offset(296.5, 432.27), const Offset(275.70, 428.83)];
+
+  // CON 44 -> BLOCO J
+  final con44J = [const Offset(338, 389.69), const Offset(319.13, 386.53)];
+
+  // CON 59 -> BLOCO J
+  final con59J = [const Offset(301.4, 391.98), const Offset(320, 386.53)];
+
+  // CON 58 -> BLOCO I
+  final con58I = [const Offset(302.70, 362.5), const Offset(284.27, 359.26)];
+
+  // CON 45 -> BLOCO G
+  final con45G = [const Offset(340.80, 367.5), const Offset(362.80, 370)];
+
+  // CON 46 -> BLOCO H
+  final con46H = [const Offset(344.27, 343.12), const Offset(323.41, 340.83)];
+
+  // CON 57 -> BLOCO H
+  final con57H = [const Offset(308.13, 340.83), const Offset(323.41, 340.83)];
+
+  // CON 54 -> BLOCO E
+  final con54E = [const Offset(313.55, 293.99), const Offset(329.97, 296.12)];
+
+  // CON 54 -> BLOCO F
+  final con54F = [const Offset(313.55, 293.99), const Offset(294.27, 290.83)];
+
+  // CON 48 -> BLOCO ARQ
+  final con48ARQ = [const Offset(351.80, 280), const Offset(372.55, 269.96)];
+
+  // CON 49 -> BLOCO ARQ
+  final con49ARQ = [const Offset(355.53, 252.83), const Offset(372.55, 269.96)];
+
+  // CON 52 -> BLOCO B
+  final con52B1 = [const Offset(317.55, 248.39), const Offset(336.75, 249.39)];
+  final con52B2 = [const Offset(319.55, 248.39), const Offset(317.7, 262)];
+
+  // CON 49 -> BLOCO B
+  final con49B = [const Offset(355.53, 252.83), const Offset(336.55, 249.39)];
+
+  // CON 51 -> BLOCO C
+  final con51C1 = [const Offset(323.5, 231.97), const Offset(301.70, 229.97)];
+  final con51C2 = [const Offset(322.56, 224.56), const Offset(321.5, 231.97)];
+
+  // CON 39 -> BLOCO P
+  final con39P = [const Offset(358.12, 544.41), const Offset(319.13, 535.39)];
+
+  // CON 40 -> BLOCO P
+  final con40P = [const Offset(321.91, 519.95), const Offset(319.13, 535.39)];
+
+  // CON 66 -> CON 6
+  final con6606 = [const Offset(218.3, 317.40), const Offset(133.7, 302.5)];
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -232,206 +324,6 @@ class MyPainter extends CustomPainter {
   List<Offset> buscaCoordenadas(int inicio, int fim) {
     print('inicio: $inicio');
     print('fim: $fim');
-    // As validações são de acordo com o valor definido em monta_grafo.dart
-    // if (inicio == 60 && fim == 61) {
-    //   // CON 40 -> CON 41
-    //   return con4041;
-    // } else if (inicio == 61 && fim == 62) {
-    //   // CON 41 -> CON 42
-    //   return con4142;
-    // } else if (inicio == 62 && fim == 63) {
-    //   // CON 42 -> CON 43
-    //   return con4243;
-    // } else if (inicio == 62 && fim == 82) {
-    //   // CON 42 -> CON 62
-    //   return con4262;
-    // } else if (inicio == 63 && fim == 64) {
-    //   // CON 43 -> CON 44
-    //   return con4344;
-    // } else if (inicio == 64 && fim == 65) {
-    //   // CON 44 -> CON 45
-    //   return con4445;
-    // } else if (inicio == 65 && fim == 66) {
-    //   // CON 45 -> CON 46
-    //   return con4546;
-    // } else if (inicio == 65 && fim == 78) {
-    //   // CON 45 -> CON 58
-    //   return con4558;
-    // } else if (inicio == 66 && fim == 67) {
-    //   // CON 46 -> CON 47
-    //   return con4647;
-    // } else if (inicio == 67 && fim == 68) {
-    //   // CON 47 -> CON 48
-    //   return con4748;
-    // } else if (inicio == 67 && fim == 75) {
-    //   // CON 47 -> CON 55
-    //   return con4755;
-    // } else if (inicio == 68 && fim == 69) {
-    //   // CON 48 -> CON 49
-    //   return con4849;
-    // } else if (inicio == 68 && fim == 73) {
-    //   // CON 48 -> CON 53
-    //   return con4853;
-    // } else if (inicio == 69 && fim == 70) {
-    //   // Linha entre CON 49 -> CON 50
-    //   return con4950;
-    // } else if (inicio == 70 && fim == 71) {
-    //   // Linha entre CON 50 -> CON 51
-    //   return con5051;
-    // } else if (inicio == 71 && fim == 72) {
-    //   // Linha entre CON 51 -> CON 52
-    //   return con5152;
-    // } else if (inicio == 72 && fim == 73) {
-    //   // Linha entre CON 52 -> CON 53
-    //   return con5253;
-    // } else if (inicio == 73 && fim == 74) {
-    //   // Linha entre CON 53 -> CON 54
-    //   return con5354;
-    // } else if (inicio == 74 && fim == 75) {
-    //   // Linha entre CON 54 -> CON 55
-    //   return con5455;
-    // } else if (inicio == 75 && fim == 76) {
-    //   // Linha entre CON 55 -> CON 56
-    //   return con5556;
-    // } else if (inicio == 76 && fim == 77) {
-    //   // Linha entre CON 56 -> CON 57
-    //   return con5657;
-    // } else if (inicio == 76 && fim == 85) {
-    //   // Linha entre CON 56 -> CON 65
-    //   return con5665;
-    // } else if (inicio == 77 && fim == 78) {
-    //   // Linha entre CON 57 -> CON 58
-    //   return con5758;
-    // } else if (inicio == 78 && fim == 79) {
-    //   // Linha entre CON 58 -> CON 59
-    //   return con5859;
-    // } else if (inicio == 79 && fim == 80) {
-    //   // Linha entre CON 59 -> CON 60
-    //   return con5960;
-    // } else if (inicio == 79 && fim == 84) {
-    //   // Linha entre CON 59 -> CON 64
-    //   return con5964;
-    // } else if (inicio == 80 && fim == 81) {
-    //   // Linha entre CON 60 -> CON 61
-    //   return con6061;
-    // } else if (inicio == 81 && fim == 82) {
-    //   // Linha entre CON 61 -> CON 62
-    //   return con6162;
-    // } else if (inicio == 82 && fim == 83) {
-    //   // Linha entre CON 62 -> CON 63
-    //   return con6263;
-    // } else if (inicio == 85 && fim == 84) {
-    //   // Linha entre CON 65 -> CON 64
-    //   return con6564;
-    // } else if (inicio == 84 && fim == 54) {
-    //   // Linha entre CON 64 -> CON 34
-    //   return con6434;
-    // } else if (inicio == 85 && fim == 28) {
-    //   // Linha entre CON 65 -> CON 8
-    //   return con6508;
-    // } else if (inicio == 85 && fim == 86) {
-    //   // Linha entre CON 65 -> CON 66
-    //   return con6566;
-    // } else if (inicio == 54 && fim == 55) {
-    //   // Linha entre CON 34 -> CON 35
-    //   return con3435;
-    // } else if (inicio == 55 && fim == 56) {
-    //   // Linha entre CON 35 -> CON 36
-    //   return con3536;
-    // } else if (inicio == 56 && fim == 57) {
-    //   // Linha entre CON 36 -> CON 37
-    //   return con3637;
-    // } else if (inicio == 57 && fim == 58) {
-    //   // Linha entre CON 37 -> CON 38
-    //   return con3738;
-    // } else if (inicio == 58 && fim == 59) {
-    //   // Linha entre CON 38 -> CON 39
-    //   return con3839;
-    // } else if (inicio == 28 && fim == 27) {
-    //   // Linha entre CON 8 -> CON 7
-    //   return con0807;
-    // } else if (inicio == 27 && fim == 22) {
-    //   // Linha entre CON 7 -> CON 2
-    //   return con0702;
-    // } else if (inicio == 22 && fim == 21) {
-    //   // Linha entre CON 2 -> CON 1
-    //   return con0201;
-    // } else if (inicio == 22 && fim == 23) {
-    //   // Linha entre CON 2 -> CON 3
-    //   return con0203;
-    // } else if (inicio == 22 && fim == 24) {
-    //   // Linha entre CON 2 -> CON 4 (ADMINISTRATIVO)
-    //   return con0204;
-    // } else if (inicio == 23 && fim == 25) {
-    //   // Linha entre CON 3 -> CON 5
-    //   return con0305;
-    // } else if (inicio == 25 && fim == 26) {
-    //   // Linha entre CON 5 -> CON 6
-    //   return con0506;
-    // } else if (inicio == 25 && fim == 31) {
-    //   // Linha entre CON 5 -> CON 11
-    //   return con0511;
-    // } else if (inicio == 26 && fim == 29) {
-    //   // Linha entre CON 6 -> CON 9 (BIBLIOTECA)
-    //   return con0609;
-    // } else if (inicio == 29 && fim == 30) {
-    //   // Linha entre CON 9 -> CON 10
-    //   return con0910;
-    // } else if (inicio == 31 && fim == 30) {
-    //   // Linha entre CON 11 -> CON 10
-    //   return con1110;
-    // } else if (inicio == 31 && fim == 34) {
-    //   // Linha entre CON 11 -> CON 14
-    //   return con1114;
-    // } else if (inicio == 30 && fim == 32) {
-    //   // Linha entre CON 10 -> CON 12
-    //   return con1012;
-    // } else if (inicio == 32 && fim == 33) {
-    //   // Linha entre CON 12 -> CON 13
-    //   return con1213;
-    // } else if (inicio == 33 && fim == 34) {
-    //   // Linha entre CON 13 -> CON 14
-    //   return con1314;
-    // } else if (inicio == 33 && fim == 45) {
-    //   // Linha entre CON 13 -> CON 25
-    //   return con1325;
-    // } else if (inicio == 34 && fim == 42) {
-    //   // Linha entre CON 14 -> CON 22
-    //   return con1422;
-    // } else if (inicio == 42 && fim == 43) {
-    //   // Linha entre CON 22 -> CON 23
-    //   return con2223;
-    // } else if (inicio == 43 && fim == 44) {
-    //   // Linha entre CON 23 -> CON 24
-    //   return con2324;
-    // } else if (inicio == 44 && fim == 46) {
-    //   // Linha entre CON 24 -> CON 26
-    //   return con2426;
-    // } else if (inicio == 46 && fim == 47) {
-    //   // Linha entre CON 26 -> CON 27
-    //   return con2627;
-    // } else if (inicio == 47 && fim == 48) {
-    //   // Linha entre CON 27 -> CON 28
-    //   return con2728;
-    // } else if (inicio == 48 && fim == 49) {
-    //   // Linha entre CON 28 -> CON 29
-    //   return con2829;
-    // } else if (inicio == 48 && fim == 50) {
-    //   // Linha entre CON 28 -> CON 30
-    //   return con2830;
-    // } else if (inicio == 50 && fim == 51) {
-    //   // Linha entre CON 30 -> CON 31
-    //   return con3031;
-    // } else if (inicio == 50 && fim == 56) {
-    //   // Linha entre CON 30 -> CON 36
-    //   return con3036;
-    // } else if (inicio == 52 && fim == 53) {
-    //   // Linha entre CON 32 -> CON 33
-    //   return con3036;
-    // } else if (inicio == 24 && fim == 26) {
-    //   // Linha entre CON 4 (ADMINISTRATIVO) -> CON 6
-    //   return con0406;
-    // }
     if ((inicio == 60 && fim == 61) || (inicio == 61 && fim == 60)) {
       // CON 40 -> CON 41
       return con4041;
@@ -558,7 +450,7 @@ class MyPainter extends CustomPainter {
     } else if ((inicio == 22 && fim == 23) || (inicio == 23 && fim == 22)) {
       // Linha entre CON 2 -> CON 3
       return con0203;
-    } else if ((inicio == 22 && fim == 24) || (inicio == 24 && fim == 22)) {
+    } else if ((inicio == 22 && fim == 0) || (inicio == 0 && fim == 22)) {
       // Linha entre CON 2 -> CON 4 (ADMINISTRATIVO)
       return con0204;
     } else if ((inicio == 23 && fim == 25) || (inicio == 25 && fim == 23)) {
@@ -570,10 +462,10 @@ class MyPainter extends CustomPainter {
     } else if ((inicio == 25 && fim == 31) || (inicio == 31 && fim == 25)) {
       // Linha entre CON 5 -> CON 11
       return con0511;
-    } else if ((inicio == 26 && fim == 29) || (inicio == 29 && fim == 26)) {
+    } else if ((inicio == 26 && fim == 1) || (inicio == 1 && fim == 26)) {
       // Linha entre CON 6 -> CON 9 (BIBLIOTECA)
       return con0609;
-    } else if ((inicio == 29 && fim == 30) || (inicio == 30 && fim == 29)) {
+    } else if ((inicio == 1 && fim == 30) || (inicio == 30 && fim == 1)) {
       // Linha entre CON 9 -> CON 10
       return con0910;
     } else if ((inicio == 31 && fim == 30) || (inicio == 30 && fim == 31)) {
@@ -627,12 +519,94 @@ class MyPainter extends CustomPainter {
     } else if ((inicio == 52 && fim == 53) || (inicio == 53 && fim == 52)) {
       // Linha entre CON 32 -> CON 33
       return con3233;
-    } else if ((inicio == 24 && fim == 26) || (inicio == 26 && fim == 24)) {
+    } else if ((inicio == 0 && fim == 26) || (inicio == 26 && fim == 0)) {
       // Linha entre CON 4 (ADMINISTRATIVO) -> CON 6
       return con0406;
+    } else if ((inicio == 46 && fim == 122) || (inicio == 122 && fim == 46)) {
+      // CON 26 -> BLOCO XXIB
+      return con26XXIB;
+    } else if ((inicio == 33 && fim == 121) || (inicio == 121 && fim == 33)) {
+      // CON 13 -> BLOCO XXIA
+      return con13XXIA;
+    } else if ((inicio == 32 && fim == 3) || (inicio == 3 && fim == 32)) {
+      // CON 12 -> BLOCO ESTUDANTE
+      return con12ESTUD;
+    } else if ((inicio == 53 && fim == 3) || (inicio == 3 && fim == 53)) {
+      // CON 33 -> BLOCO ESTUDANTE
+      return con33ESTUD;
+    } else if ((inicio == 61 && fim == 163) || (inicio == 163 && fim == 61)) {
+      // CON 41 -> N/O
+      return con41NO;
+    } else if ((inicio == 83 && fim == 163) || (inicio == 163 && fim == 83)) {
+      // CON 63 -> N/O
+      return con63NO;
+    } else if ((inicio == 81 && fim == 54) || (inicio == 54 && fim == 81)) {
+      // CON 61 -> CON 34
+      return con6134;
+    } else if ((inicio == 63 && fim == 12) || (inicio == 12 && fim == 63)) {
+      // CON 43 -> BLOCO K
+      return con43K;
+    } else if ((inicio == 63 && fim == 14) || (inicio == 14 && fim == 63)) {
+      // CON 43 -> BLOCO M
+      return con43M;
+    } else if ((inicio == 80 && fim == 14) || (inicio == 14 && fim == 80)) {
+      // CON 60 -> BLOCO M
+      return con60M;
+    } else if ((inicio == 80 && fim == 13) || (inicio == 13 && fim == 80)) {
+      // CON 60 -> BLOCO L
+      return con60L;
+    } else if ((inicio == 64 && fim == 11) || (inicio == 11 && fim == 64)) {
+      // CON 44 -> BLOCO J
+      return con44J;
+    } else if ((inicio == 79 && fim == 11) || (inicio == 11 && fim == 79)) {
+      // CON 59 -> BLOCO J
+      return con59J;
+    } else if ((inicio == 78 && fim == 10) || (inicio == 10 && fim == 78)) {
+      // CON 58 -> BLOCO I
+      return con58I;
+    } else if ((inicio == 65 && fim == 8) || (inicio == 8 && fim == 65)) {
+      // CON 45 -> BLOCO G
+      return con45G;
+    } else if ((inicio == 66 && fim == 9) || (inicio == 9 && fim == 66)) {
+      // CON 46 -> BLOCO H
+      return con46H;
+    } else if ((inicio == 77 && fim == 9) || (inicio == 9 && fim == 77)) {
+      // CON 57 -> BLOCO H
+      return con57H;
+    } else if ((inicio == 74 && fim == 6) || (inicio == 6 && fim == 74)) {
+      // CON 54 -> BLOCO E
+      return con54E;
+    } else if ((inicio == 74 && fim == 7) || (inicio == 7 && fim == 74)) {
+      // CON 54 -> BLOCO F
+      return con54F;
+    } else if ((inicio == 68 && fim == 126) || (inicio == 126 && fim == 68)) {
+      // CON 48 -> BLOCO ARQ
+      return con48ARQ;
+    } else if ((inicio == 69 && fim == 126) || (inicio == 126 && fim == 69)) {
+      // CON 49 -> BLOCO ARQ
+      return con49ARQ;
+    } else if ((inicio == 69 && fim == 126) || (inicio == 126 && fim == 69)) {
+      // CON 52 -> BLOCO B
+      return con52B1;
+      // return con52B2; TODO: Verificar para retornar isso também
+    } else if ((inicio == 69 && fim == 5) || (inicio == 5 && fim == 69)) {
+      // CON 49 -> BLOCO B
+      return con49B;
+    } else if ((inicio == 71 && fim == 4) || (inicio == 4 && fim == 71)) {
+      // CON 51 -> BLOCO C
+      return con51C1;
+      // return con51C2; TODO: Verificar para retornar isso também
+    } else if ((inicio == 59 && fim == 15) || (inicio == 15 && fim == 59)) {
+      // CON 39 -> BLOCO P
+      return con39P;
+    } else if ((inicio == 60 && fim == 15) || (inicio == 15 && fim == 60)) {
+      // CON 40 -> BLOCO P
+      return con40P;
+    } else if ((inicio == 86 && fim == 26) || (inicio == 26 && fim == 86)) {
+      // CON 66 -> CON 6
+      return con6606;
     }
 
     return [];
-    // return [const Offset(138, 202), const Offset(135.7, 302.5)];
   }
 }

@@ -224,8 +224,8 @@ class MontaGrafos {
     grafo.criaAresta(conexao_32, conexao_33, 2);
     // Quando está no 33 está na rota lateral do bloco do Estudante
     grafo.criaAresta(conexao_33, blocoEstudante, 1);
-    // Quando está no 34 está na rota atrás do bloco do Estudante
-    grafo.criaAresta(conexao_34, blocoEstudante, 1);
+    // Quando está no 34 está na rota atrás do bloco do Estudante // não tem entrada para alunos
+    // grafo.criaAresta(conexao_34, blocoEstudante, 1);
     grafo.criaAresta(conexao_34, conexao_35, 2);
     grafo.criaAresta(conexao_34, conexao_64, 2);
     // Quando está no 35 está na rota atrás do bloco XXIC
@@ -242,14 +242,14 @@ class MontaGrafos {
     grafo.criaAresta(conexao_38, conexao_39, 2);
     // Quando está no 39 está na frente do bloco P (rota lateral)
     grafo.criaAresta(conexao_39, blocoP, 1);
-    // Quando está no 39 está na frente do bloco P
+    // Quando está no 40 está na frente do bloco P
     grafo.criaAresta(conexao_40, blocoP, 1);
     grafo.criaAresta(conexao_40, conexao_41, 2);
     // Quando está no 39 está na frente do bloco N/O
     grafo.criaAresta(conexao_41, blocoNO, 1);
     grafo.criaAresta(conexao_41, conexao_42, 2);
     grafo.criaAresta(conexao_42, conexao_43, 2);
-    grafo.criaAresta(conexao_42, conexao_55, 2);
+    grafo.criaAresta(conexao_42, conexao_62, 2);
     // Quando está no 43 está na frente do bloco M/K
     grafo.criaAresta(conexao_43, blocoM, 1);
     grafo.criaAresta(conexao_43, blocoK, 1);
@@ -305,14 +305,14 @@ class MontaGrafos {
     grafo.criaAresta(conexao_60, blocoM, 1);
     grafo.criaAresta(conexao_60, conexao_61, 2);
     grafo.criaAresta(conexao_61, conexao_62, 2);
+    grafo.criaAresta(conexao_61, conexao_34, 2);
     grafo.criaAresta(conexao_62, conexao_63, 2);
     // Quando está no 63 está atrás do bloco N/O
     grafo.criaAresta(conexao_63, blocoNO, 1);
     grafo.criaAresta(conexao_62, conexao_34, 2);
     grafo.criaAresta(conexao_64, conexao_65, 2);
     grafo.criaAresta(conexao_65, conexao_66, 2);
-    // Quando está no 66 está atrás do bloco Biblioteca
-    grafo.criaAresta(conexao_66, blocoBiblioteca, 1);
+    grafo.criaAresta(conexao_66, conexao_6, 1);
     // Quando está no 67 está atrás do bloco C
     grafo.criaAresta(conexao_67, blocoC, 1);
     grafo.criaAresta(conexao_68, conexao_69, 2);
