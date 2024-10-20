@@ -41,6 +41,7 @@ dependencies:
   provider: ^6.1.2
   shared_preferences: ^2.0.15
   font_awesome_flutter: ^10.7.0
+  device_preview: ^1.1.0
 
 flutter_native_splash:
   color: "#FFFFFF"

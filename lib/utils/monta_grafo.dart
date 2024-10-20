@@ -165,6 +165,9 @@ class MontaGrafos {
   final int restaurante = 161;
   final int clinicasIntegradas = 162;
   final int blocoNO = 163;
+  final int conexao_131 = 164;
+  final int conexao_132 = 165;
+  final int conexao_133 = 166;
 
   /// Define as arestas (caminhos) entre os vértices (blocos)
   Grafo montaArestas(Grafo grafo) {
@@ -192,6 +195,7 @@ class MontaGrafos {
     grafo.criaAresta(conexao_13, conexao_25, 2);
     // Quando está no 25 está na frente do bloco XXIA, porém tem rotas pelos outros lados.
     grafo.criaAresta(conexao_25, blocoXXIA, 1);
+    grafo.criaAresta(conexao_132, blocoXXIA, 1);
     grafo.criaAresta(conexao_14, conexao_22, 2);
     grafo.criaAresta(conexao_15, conexao_16, 2);
     grafo.criaAresta(conexao_16, conexao_17, 2);
@@ -209,18 +213,19 @@ class MontaGrafos {
     // Quando está no 26 ou 27 está na frente do bloco XXIB
     grafo.criaAresta(conexao_26, blocoXXIB, 1);
     grafo.criaAresta(conexao_27, blocoXXIB, 2);
+    grafo.criaAresta(conexao_132, blocoXXIB, 2);
     grafo.criaAresta(conexao_27, conexao_28, 2);
     grafo.criaAresta(conexao_28, conexao_29, 2);
-    // Quando está no 29 está na frente do bloco XXIB ou XXIC
-    grafo.criaAresta(conexao_29, blocoXXIB, 1);
-    grafo.criaAresta(conexao_29, blocoXXIC, 1);
+    // // Quando está no 29 está na frente do bloco XXIB ou XXIC
+    // grafo.criaAresta(conexao_29, blocoXXIB, 1);
+    // grafo.criaAresta(conexao_29, blocoXXIC, 1);
     grafo.criaAresta(conexao_28, conexao_30, 2);
     grafo.criaAresta(conexao_30, conexao_31, 2);
     grafo.criaAresta(conexao_30, conexao_36, 2);
-    // Quando está no 31 está na frente do bloco XXIC
-    grafo.criaAresta(conexao_31, blocoXXIC, 1);
-    // Quando está no 32 está na frente do bloco XXIC em direção ao bloco do estudante
-    grafo.criaAresta(conexao_32, blocoXXIC, 1);
+    // // Quando está no 31 está na frente do bloco XXIC
+    // grafo.criaAresta(conexao_31, blocoXXIC, 1);
+    // // Quando está no 32 está na frente do bloco XXIC em direção ao bloco do estudante
+    // grafo.criaAresta(conexao_32, blocoXXIC, 1);
     grafo.criaAresta(conexao_32, conexao_33, 2);
     // Quando está no 33 está na rota lateral do bloco do Estudante
     grafo.criaAresta(conexao_33, blocoEstudante, 1);
@@ -228,8 +233,9 @@ class MontaGrafos {
     // grafo.criaAresta(conexao_34, blocoEstudante, 1);
     grafo.criaAresta(conexao_34, conexao_35, 2);
     grafo.criaAresta(conexao_34, conexao_64, 2);
-    // Quando está no 35 está na rota atrás do bloco XXIC
-    grafo.criaAresta(conexao_35, blocoXXIC, 1);
+    // Quando está no 132 está na rota na frente do bloco XXIC
+    grafo.criaAresta(conexao_132, blocoXXIC, 1);
+    grafo.criaAresta(conexao_35, conexao_132, 2);
     grafo.criaAresta(conexao_35, conexao_36, 2);
     // Quando está no 36 está na frente do bloco Z
     grafo.criaAresta(conexao_36, blocoZ, 1);
@@ -243,8 +249,9 @@ class MontaGrafos {
     // Quando está no 39 está na frente do bloco P (rota lateral)
     grafo.criaAresta(conexao_39, blocoP, 1);
     // Quando está no 40 está na frente do bloco P
-    grafo.criaAresta(conexao_40, blocoP, 1);
-    grafo.criaAresta(conexao_40, conexao_41, 2);
+    grafo.criaAresta(blocoNO, blocoP, 1);
+    grafo.criaAresta(blocoNO, conexao_41, 2);
+    // grafo.criaAresta(conexao_40, blocoNO, 1);
     // Quando está no 39 está na frente do bloco N/O
     grafo.criaAresta(conexao_41, blocoNO, 1);
     grafo.criaAresta(conexao_41, conexao_42, 2);
@@ -265,12 +272,13 @@ class MontaGrafos {
     // Quando está no 46 está na frente do bloco H
     grafo.criaAresta(conexao_46, blocoH, 1);
     grafo.criaAresta(conexao_46, conexao_47, 2);
-    grafo.criaAresta(conexao_47, conexao_48, 2);
+    grafo.criaAresta(conexao_47, conexao_133, 2);
     grafo.criaAresta(conexao_47, conexao_55, 2);
     // Quando está no 48 está na frente do bloco Atelie Arq.
     grafo.criaAresta(conexao_48, atelieArq, 1);
     grafo.criaAresta(conexao_48, conexao_49, 2);
     grafo.criaAresta(conexao_48, conexao_53, 2);
+    grafo.criaAresta(conexao_48, conexao_133, 2);
     // Quando está no 49 está na frente do bloco Atelie Arq. e do Bloco B
     grafo.criaAresta(conexao_49, blocoB, 1);
     grafo.criaAresta(conexao_49, atelieArq, 1);
@@ -309,12 +317,12 @@ class MontaGrafos {
     grafo.criaAresta(conexao_62, conexao_63, 2);
     // Quando está no 63 está atrás do bloco N/O
     grafo.criaAresta(conexao_63, blocoNO, 1);
-    grafo.criaAresta(conexao_62, conexao_34, 2);
     grafo.criaAresta(conexao_64, conexao_65, 2);
     grafo.criaAresta(conexao_65, conexao_66, 2);
     grafo.criaAresta(conexao_66, conexao_6, 1);
     // Quando está no 67 está atrás do bloco C
     grafo.criaAresta(conexao_67, blocoC, 1);
+    grafo.criaAresta(conexao_67, conexao_52, 2);
     grafo.criaAresta(conexao_68, conexao_69, 2);
     grafo.criaAresta(conexao_69, conexao_70, 2);
     grafo.criaAresta(conexao_69, conexao_74, 2);
@@ -430,6 +438,8 @@ class MontaGrafos {
     grafo.criaAresta(conexao_124, conexao_109, 2);
     // Quando está no 124 está atrás do bloco R2
     grafo.criaAresta(conexao_124, blocoR2, 1);
+    // conexão 133 com bloco E
+    grafo.criaAresta(conexao_133, blocoE, 1);
     return grafo;
   }
 }

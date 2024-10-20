@@ -4,12 +4,10 @@ import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
 main() => {
-      runApp(
-        ChangeNotifierProvider(
-          create: (context) => ThemeProvider(),
-          child: const NavigationApp(),
-        ),
-      )
+      runApp(ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+        child: const NavigationApp(),
+      )),
     };
 
 class NavigationApp extends StatelessWidget {

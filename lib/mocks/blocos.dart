@@ -23,6 +23,7 @@ List<Bloco> blocos = [
   Bloco(id: 126, title: 'Ateliê Arquitetura', subtitle: 'AR'),
   Bloco(id: 4, title: 'Bloco C', subtitle: 'C'),
   Bloco(id: 5, title: 'Bloco B', subtitle: 'B'),
+  Bloco(id: 20, title: 'Bloco Q', subtitle: 'Q'),
 
   // Blocos ainda não suportados.
   // Bloco(id: 1, title: 'Bloco R1', subtitle: 'R1'),

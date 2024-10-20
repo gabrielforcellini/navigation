@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:navigation/components/my_painter.dart';
-import 'package:navigation/mocks/blocos.dart';
 import 'package:navigation/models/bloco.dart';
 import 'package:navigation/models/grafo.dart';
 import 'package:navigation/pages/choose_where_go_toroute_page.dart';
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     final appBar = AppBar(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: const Text(
-        'Navigation',
+        'Navegação',
       ),
       actions: <Widget>[
         IconButton(
@@ -108,7 +107,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 calcula(int idBlocoInicial, int idBlocoFinal) {
-  Grafo campus = Grafo(165);
+  Grafo campus = Grafo(167);
   MontaGrafos builder = MontaGrafos();
 
   builder.montaArestas(campus);
