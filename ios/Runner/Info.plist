@@ -48,6 +48,10 @@
 		<key>NSCameraUsageDescription</key>
 		<string>Este aplicativo precisa acessar a câmera para ler QR Codes.</string>
 		<key>UIStatusBarHidden</key>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Precisa de acesso ao Wi-Fi para obter informações da rede.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Precisamos de acesso à localização para verificar o status dos serviços de localização.</string>
 		<false/>
 	</dict>
 </plist>
