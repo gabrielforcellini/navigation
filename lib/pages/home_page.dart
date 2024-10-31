@@ -32,14 +32,11 @@ class _HomePageState extends State<HomePage> {
         MaterialPageRoute(builder: (context) => const ChooseWhereRoutePage()),
       );
 
-      print('result: $result');
       if (result != null) {
         setState(() {
           blocoIni = result['blocoIni'];
           blocoFim = result['blocoFim'];
         });
-        print('Bloco Inicial: ${blocoIni?.title}');
-        print('Bloco Final: ${blocoFim?.title}');
         setState(
           () {
             caminho = calcula(blocoIni!.id, blocoFim!.id);
@@ -111,8 +108,5 @@ calcula(int idBlocoInicial, int idBlocoFinal) {
   MontaGrafos builder = MontaGrafos();
 
   builder.montaArestas(campus);
-  for (int bloco in campus.caminhoMinimo(idBlocoInicial, idBlocoFinal)) {
-    print('bloco: $bloco');
-  }
   return campus.caminhoMinimo(idBlocoInicial, idBlocoFinal);
 }

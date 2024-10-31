@@ -361,7 +361,6 @@ class MyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print("caminho: $caminho");
     if (caminho.isEmpty) return;
 
     for (int i = 0; i < caminho.length - 1; i++) {
@@ -382,8 +381,6 @@ class MyPainter extends CustomPainter {
   }
 
   List<List<Offset>> buscaCoordenadas(int inicio, int fim) {
-    print('inicio: $inicio');
-    print('fim: $fim');
     if ((inicio == 60 && fim == 61) || (inicio == 61 && fim == 60)) {
       // CON 40 -> CON 41
       return [con4041];
@@ -700,8 +697,6 @@ class MyPainter extends CustomPainter {
       // CON 67 -> BLOCO C
       return [con67C];
     }
-
-    print("não encontrou: $inicio - $fim");
     return [];
   }
 }
