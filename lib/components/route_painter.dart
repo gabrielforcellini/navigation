@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MyPainter extends CustomPainter {
+class RoutePainter extends CustomPainter {
   final List<int> caminho;
 
-  MyPainter(this.caminho);
+  RoutePainter(this.caminho);
 
   // Pincel
   final painter = Paint()
