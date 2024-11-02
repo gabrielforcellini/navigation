@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   Bloco? blocoIni;
   Bloco? blocoFim;
   List<int> caminho = [];
-  Offset? locationPosition;
   Timer? _wifiCheckTimer;
   String? _currentWifiName;
 
@@ -43,29 +42,16 @@ class _HomePageState extends State<HomePage> {
     if (wifiInfo != null) {
       // Calcula a posição com base no SSID
       setState(() {
-        //locationPosition = _calculatePositionFromWifi(wifiInfo.ssid);
         _currentWifiName = wifiInfo.ssid; // Salva o SSID atual
       });
     }
   }
 
-  Offset? _calculatePositionFromWifi(String? wifiName) {
-    if (wifiName == null || wifiName == 'Nome desconhecido') {
-      return null;
-    }
-
-    // Exemplo de cálculo, você pode ajustar conforme a lógica necessária
-    return Offset(
-      wifiName.length * 10.0, // O cálculo da posição baseado no SSID
-      300, // Posição fixa Y, ajuste conforme necessário
-    );
-  }
-
   void _startWifiCheck() {
-    _wifiCheckTimer = Timer.periodic(const Duration(seconds: 5), (timer) async {
+    _wifiCheckTimer =
+        Timer.periodic(const Duration(seconds: 10), (timer) async {
       Wifi? wifiInfo = await getWifiInfo();
       if (wifiInfo != null && wifiInfo.ssid != _currentWifiName) {
-        print("Wi-Fi mudado de $_currentWifiName para: ${wifiInfo.ssid}");
         await _fetchWifiInfo(); // Atualiza a posição quando Wi-Fi muda
       }
     });
@@ -120,15 +106,15 @@ class _HomePageState extends State<HomePage> {
         //       ? FontAwesomeIcons.solidMoon
         //       : FontAwesomeIcons.solidSun),
         // ),
-        // IconButton(
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(builder: (context) => const WifiInfoScreen()),
-        //     );
-        //   },
-        //   icon: const Icon(FontAwesomeIcons.wifi),
-        // )
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WifiInfoScreen()),
+            );
+          },
+          icon: const Icon(FontAwesomeIcons.wifi),
+        )
       ],
     );
 
@@ -152,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                     size: const Size(300, 300),
                     painter: RoutePainter(caminho),
                   ),
-                  LocationIndicator(position: locationPosition),
+                  LocationIndicator(ssid: _currentWifiName),
                 ],
               )),
             ),

@@ -1,56 +1,87 @@
 import 'package:flutter/material.dart';
 
 class LocationIndicator extends StatelessWidget {
-  final Offset? position; // Posição dinâmica da bolinha
+  final String? ssid;
 
-  const LocationIndicator({super.key, required this.position});
+  const LocationIndicator({super.key, required this.ssid});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       size: const Size(
           double.infinity, double.infinity), // Pintar no canvas completo
-      painter: LocationIndicatorPainter(position: position),
+      painter: LocationIndicatorPainter(ssid: ssid),
     );
   }
 }
 
 class LocationIndicatorPainter extends CustomPainter {
-  final Offset? position;
+  String? ssid;
+  Offset positionMock = const Offset(140, 430);
 
-  LocationIndicatorPainter({required this.position});
+  LocationIndicatorPainter({required this.ssid});
+
+  Offset? _calculatePositionFromWifi(String? ssid) {
+    print("ssid: $ssid");
+    if (ssid == null || ssid == 'Nome desconhecido') {
+      return null;
+    }
+
+    if (ssid == 'b4:2d:56:ec:36:a1') {
+      // XXIA ANDAR 2
+      return const Offset(135, 500);
+    } else if (ssid == 'd8:84:66:d6:f9:29') {
+      // XXIA TERREO
+      return const Offset(135, 500);
+    } else if (ssid == 'b4:2d:56:f0:ef:e1') {
+      // Entre XXIA e ESTUDANTES
+      return const Offset(140, 430);
+    } else if (ssid == 'b4:2d:56:f0:ed:41') {
+      // Bloco BIBLIOTECA
+      return const Offset(135, 365);
+    } else if (ssid == 'd8:84:66:d6:b3:f9') {
+      // Bloco BIBLIOTECA
+      return const Offset(135, 310);
+    } else if (ssid == 'd8:84:66:d6:b2:49') {
+      // Bloco ADMINISTRATIVO
+      return const Offset(135, 235);
+    } else if (ssid == 'AndroidWifi') {
+      // Apenas para testes
+      return const Offset(200, 400);
+    }
+    return null;
+  }
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Verifica se a posição é nula; se for, não desenha nada
+    if (ssid == null) return;
+
+    Offset? position = _calculatePositionFromWifi(ssid);
+
     if (position == null) return;
 
-    final double circleRadius = size.width * 0.02; // Tamanho do círculo central
-    final double outerRingRadius =
-        size.width * 0.025; // Tamanho do anel externo
+    final double circleRadius = size.width * 0.02;
+    final double outerRingRadius = size.width * 0.025;
 
-    // Definindo o pincel para o círculo central
     final Paint circlePaint = Paint()
-      ..color = Colors.blue // Cor do círculo central
-      ..style = PaintingStyle.fill; // Largura do anel
+      ..color = Colors.blue
+      ..style = PaintingStyle.fill;
 
-    // Desenha o círculo central na posição fornecida
+    // Desenha o círculo central
     canvas.drawCircle(
-      position!,
+      position,
       circleRadius,
       circlePaint,
     );
 
-    // Pincel para o anel externo
     final Paint ringPaint = Paint()
-      ..color =
-          Colors.blue.withOpacity(0.3) // Cor do anel externo com transparência
+      ..color = Colors.blue.withOpacity(0.3)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 25; // Largura do anel
+      ..strokeWidth = 25;
 
-    // Desenha o anel externo na mesma posição
+    // Desenha o anel externo
     canvas.drawCircle(
-      position!,
+      position,
       outerRingRadius,
       ringPaint,
     );
