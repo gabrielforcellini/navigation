@@ -9,12 +9,8 @@ import 'package:navigation/models/grafo.dart';
 import 'package:navigation/models/wifi.dart';
 import 'package:navigation/pages/wifi_info_page.dart';
 import 'package:navigation/pages/choose_where_go_toroute_page.dart';
-import 'package:navigation/ui/theme.dart';
-import 'package:navigation/ui/theme_provider.dart';
 import 'package:navigation/utils/monta_grafo.dart';
 import 'package:navigation/utils/wifi_info.dart';
-import 'package:network_info_plus/network_info_plus.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,7 +61,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Provider.of<ThemeProvider>(context).getThemeData;
+    // Obtém a largura e altura da tela usando MediaQuery
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     navegar() async {
       final result = await Navigator.push(
@@ -136,9 +134,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   CustomPaint(
                     size: const Size(300, 300),
-                    painter: RoutePainter(caminho),
+                    painter: RoutePainter(caminho, screenWidth, screenHeight),
                   ),
-                  LocationIndicator(ssid: _currentWifiName),
+                  LocationIndicator(
+                      ssid: _currentWifiName,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight),
                 ],
               )),
             ),

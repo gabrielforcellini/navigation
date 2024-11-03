@@ -2,24 +2,35 @@ import 'package:flutter/material.dart';
 
 class LocationIndicator extends StatelessWidget {
   final String? ssid;
+  final double screenWidth;
+  final double screenHeight;
 
-  const LocationIndicator({super.key, required this.ssid});
+  const LocationIndicator(
+      {super.key,
+      required this.ssid,
+      required this.screenWidth,
+      required this.screenHeight});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(
-          double.infinity, double.infinity), // Pintar no canvas completo
-      painter: LocationIndicatorPainter(ssid: ssid),
+      size: const Size(double.infinity, double.infinity),
+      painter: LocationIndicatorPainter(
+          ssid: ssid, screenWidth: screenWidth, screenHeight: screenHeight),
     );
   }
 }
 
 class LocationIndicatorPainter extends CustomPainter {
   String? ssid;
+  final double screenWidth;
+  final double screenHeight;
   Offset positionMock = const Offset(140, 430);
 
-  LocationIndicatorPainter({required this.ssid});
+  LocationIndicatorPainter(
+      {required this.ssid,
+      required this.screenWidth,
+      required this.screenHeight});
 
   Offset? _calculatePositionFromWifi(String? ssid) {
     print("ssid: $ssid");
@@ -48,6 +59,9 @@ class LocationIndicatorPainter extends CustomPainter {
     } else if (ssid == 'AndroidWifi') {
       // Apenas para testes
       return const Offset(200, 400);
+    } else if (ssid == '30:1f:48:0b:3b:08') {
+      // Apenas para testes
+      return const Offset(300, 400);
     }
     return null;
   }
