@@ -33,7 +33,7 @@ class CustomCard extends StatelessWidget {
                           style: Theme.of(context).textTheme.labelLarge)),
                 ),
               ),
-              const SizedBox(width: 8), // Espaçamento entre o avatar e o texto
+              const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   bloco.title,

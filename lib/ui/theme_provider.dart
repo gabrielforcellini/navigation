@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation/theme/theme.dart'; // Certifique-se de que este arquivo existe e contém os temas
+import 'package:navigation/ui/theme.dart';
 
 class ThemeProvider with ChangeNotifier {
   ThemeData _themeData = lightMode;

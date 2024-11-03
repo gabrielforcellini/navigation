@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyPainter extends CustomPainter {
+class RoutePainter extends CustomPainter {
   final List<int> caminho;
+  final double screenWidth;
+  final double screenHeight;
 
-  MyPainter(this.caminho);
+  RoutePainter(this.caminho, this.screenWidth, this.screenHeight);
+
+  // Tamanho de referência de um dispositivo de 6 polegadas (que foi usado para desenvolver).
+  final double referenceWidth = 411.42;
+  final double referenceHeight = 867.42;
 
   // Pincel
   final painter = Paint()
@@ -359,18 +365,27 @@ class MyPainter extends CustomPainter {
   final con67521 = [const Offset(286.5, 228), const Offset(284.12, 256.5)];
   final con67522 = [const Offset(282, 256), const Offset(319.7, 260)];
 
+  // Método para aplicar a escala de acordo com o tamanho da tela atual
+  Offset scaleOffset(Offset offset) {
+    double scaleX = screenWidth / referenceWidth;
+    double scaleY = screenHeight / referenceHeight;
+    return Offset(offset.dx * scaleX, offset.dy * scaleY);
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
-    print("caminho: $caminho");
     if (caminho.isEmpty) return;
+
+    print('largura: $screenWidth');
+    print('altura: $screenHeight');
 
     for (int i = 0; i < caminho.length - 1; i++) {
       List<List<Offset>> rotas = buscaCoordenadas(caminho[i], caminho[i + 1]);
       for (var coordenadas in rotas) {
         if (coordenadas.isNotEmpty) {
-          Offset x = coordenadas[0];
-          Offset y = coordenadas[1];
-          canvas.drawLine(x, y, painter);
+          Offset start = scaleOffset(coordenadas[0]);
+          Offset end = scaleOffset(coordenadas[1]);
+          canvas.drawLine(start, end, painter);
         }
       }
     }
@@ -382,8 +397,6 @@ class MyPainter extends CustomPainter {
   }
 
   List<List<Offset>> buscaCoordenadas(int inicio, int fim) {
-    print('inicio: $inicio');
-    print('fim: $fim');
     if ((inicio == 60 && fim == 61) || (inicio == 61 && fim == 60)) {
       // CON 40 -> CON 41
       return [con4041];
@@ -700,8 +713,6 @@ class MyPainter extends CustomPainter {
       // CON 67 -> BLOCO C
       return [con67C];
     }
-
-    print("não encontrou: $inicio - $fim");
     return [];
   }
 }
