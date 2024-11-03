@@ -1,13 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:navigation/components/my_painter.dart';
+import 'package:navigation/components/location_indicator_painter.dart';
+import 'package:navigation/components/route_painter.dart';
 import 'package:navigation/models/bloco.dart';
 import 'package:navigation/models/grafo.dart';
+import 'package:navigation/models/wifi.dart';
+import 'package:navigation/pages/wifi_info_page.dart';
 import 'package:navigation/pages/choose_where_go_toroute_page.dart';
-import 'package:navigation/theme/theme.dart';
-import 'package:navigation/theme/theme_provider.dart';
 import 'package:navigation/utils/monta_grafo.dart';
-import 'package:provider/provider.dart';
+import 'package:navigation/utils/wifi_info.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,13 +23,49 @@ class _HomePageState extends State<HomePage> {
   Bloco? blocoIni;
   Bloco? blocoFim;
   List<int> caminho = [];
+  Timer? _wifiCheckTimer;
+  String? _currentWifiName;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchWifiInfo(); // Chama a função para obter informações do Wi-Fi
+    _startWifiCheck(); // Inicia o timer para verificar mudanças de Wi-Fi
+  }
+
+  Future<void> _fetchWifiInfo() async {
+    Wifi? wifiInfo = await getWifiInfo();
+    if (wifiInfo != null) {
+      // Calcula a posição com base no SSID
+      setState(() {
+        _currentWifiName = wifiInfo.ssid; // Salva o SSID atual
+      });
+    }
+  }
+
+  void _startWifiCheck() {
+    _wifiCheckTimer =
+        Timer.periodic(const Duration(seconds: 10), (timer) async {
+      Wifi? wifiInfo = await getWifiInfo();
+      if (wifiInfo != null && wifiInfo.ssid != _currentWifiName) {
+        await _fetchWifiInfo(); // Atualiza a posição quando Wi-Fi muda
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _wifiCheckTimer?.cancel(); // Cancela o timer ao descartar o widget
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Provider.of<ThemeProvider>(context).getThemeData;
+    // Obtém a largura e altura da tela usando MediaQuery
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     navegar() async {
-      // Aguardando o retorno de dados da segunda tela
       final result = await Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const ChooseWhereRoutePage()),
@@ -57,14 +96,23 @@ class _HomePageState extends State<HomePage> {
             await navegar();
           },
         ),
+        // IconButton(
+        //   onPressed: () => {
+        //     Provider.of<ThemeProvider>(context, listen: false).toggleTheme()
+        //   },
+        //   icon: Icon(theme == lightMode
+        //       ? FontAwesomeIcons.solidMoon
+        //       : FontAwesomeIcons.solidSun),
+        // ),
         IconButton(
-          onPressed: () => {
-            Provider.of<ThemeProvider>(context, listen: false).toggleTheme()
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WifiInfoScreen()),
+            );
           },
-          icon: Icon(theme == lightMode
-              ? FontAwesomeIcons.solidMoon
-              : FontAwesomeIcons.solidSun),
-        ),
+          icon: const Icon(FontAwesomeIcons.wifi),
+        )
       ],
     );
 
@@ -81,13 +129,17 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                 children: [
                   Image.asset(
-                    'assets/images/planta_baixa_copia2.png',
+                    'assets/images/planta_baixa.png',
                     height: MediaQuery.of(context).size.height,
                   ),
                   CustomPaint(
-                    size: const Size(300, 300), // Tamanho do widget CustomPaint
-                    painter: MyPainter(caminho),
+                    size: const Size(300, 300),
+                    painter: RoutePainter(caminho, screenWidth, screenHeight),
                   ),
+                  LocationIndicator(
+                      ssid: _currentWifiName,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight),
                 ],
               )),
             ),
