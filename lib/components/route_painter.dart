@@ -376,9 +376,6 @@ class RoutePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (caminho.isEmpty) return;
 
-    print('largura: $screenWidth');
-    print('altura: $screenHeight');
-
     for (int i = 0; i < caminho.length - 1; i++) {
       List<List<Offset>> rotas = buscaCoordenadas(caminho[i], caminho[i + 1]);
       for (var coordenadas in rotas) {

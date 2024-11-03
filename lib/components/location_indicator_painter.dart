@@ -33,7 +33,6 @@ class LocationIndicatorPainter extends CustomPainter {
       required this.screenHeight});
 
   Offset? _calculatePositionFromWifi(String? ssid) {
-    print("ssid: $ssid");
     if (ssid == null || ssid == 'Nome desconhecido') {
       return null;
     }

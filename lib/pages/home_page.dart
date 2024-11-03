@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchWifiInfo() async {
     Wifi? wifiInfo = await getWifiInfo();
     if (wifiInfo != null) {
-      // Calcula a posição com base no SSID
       setState(() {
         _currentWifiName = wifiInfo.ssid; // Salva o SSID atual
       });
@@ -96,14 +95,6 @@ class _HomePageState extends State<HomePage> {
             await navegar();
           },
         ),
-        // IconButton(
-        //   onPressed: () => {
-        //     Provider.of<ThemeProvider>(context, listen: false).toggleTheme()
-        //   },
-        //   icon: Icon(theme == lightMode
-        //       ? FontAwesomeIcons.solidMoon
-        //       : FontAwesomeIcons.solidSun),
-        // ),
         IconButton(
           onPressed: () {
             Navigator.push(

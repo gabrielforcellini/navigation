@@ -7,7 +7,7 @@ Future<Wifi?> getWifiInfo() async {
   await requestPermission();
   if (!(await checkPermissionStatus())) {
     print("Permissão negada.");
-    return null; // Retorna null se a permissão for negada
+    return null;
   }
   print("Buscando informação do Wi-Fi.");
 
@@ -17,9 +17,9 @@ Future<Wifi?> getWifiInfo() async {
   String? wifiIP;
 
   try {
-    wifiName = await info.getWifiName(); // Obter SSID
-    wifiBSSID = await info.getWifiBSSID(); // Obter BSSID
-    wifiIP = await info.getWifiIP(); // Obter IP
+    wifiName = await info.getWifiName();
+    wifiBSSID = await info.getWifiBSSID();
+    wifiIP = await info.getWifiIP();
 
     // Garantir que valores nulos sejam substituídos por strings padrão
     wifiName = wifiName ?? "Nome desconhecido";
@@ -30,6 +30,6 @@ Future<Wifi?> getWifiInfo() async {
     return Wifi(ssid: wifiName, bssid: wifiBSSID, ip: wifiIP);
   } catch (e) {
     print('Erro ao obter informações de Wi-Fi: $e');
-    return null; // Retorna null em caso de erro
+    return null;
   }
 }

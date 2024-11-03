@@ -10,9 +10,9 @@ class WifiInfoScreen extends StatefulWidget {
 }
 
 class _WifiInfoScreenState extends State<WifiInfoScreen> {
-  String? _wifiName = 'Unknown'; // SSID
-  String? _wifiBSSID = 'Unknown'; // BSSID
-  String? _wifiIP = 'Unknown'; // IP address
+  String? _wifiName = 'Unknown';
+  String? _wifiBSSID = 'Unknown';
+  String? _wifiIP = 'Unknown';
 
   @override
   void initState() {
@@ -33,9 +33,9 @@ class _WifiInfoScreenState extends State<WifiInfoScreen> {
     final info = NetworkInfo();
 
     try {
-      wifiName = await info.getWifiName(); // Obter SSID
-      wifiBSSID = await info.getWifiBSSID(); // Obter BSSID
-      wifiIP = await info.getWifiIP(); // Obter IP
+      wifiName = await info.getWifiName();
+      wifiBSSID = await info.getWifiBSSID();
+      wifiIP = await info.getWifiIP();
     } catch (e) {
       print('Erro ao obter informações de Wi-Fi: $e');
     }
