@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     Wifi? wifiInfo = await getWifiInfo();
     if (wifiInfo != null) {
       setState(() {
-        _currentWifiName = wifiInfo.ssid; // Salva o SSID atual
+        _currentWifiName = wifiInfo.bssid; // Salva o BSSID atual
       });
     }
   }

@@ -26,6 +26,9 @@ class LocationIndicatorPainter extends CustomPainter {
   final double screenWidth;
   final double screenHeight;
   Offset positionMock = const Offset(140, 430);
+  // Tamanho de referência de um dispositivo de 6 polegadas (que foi usado para desenvolver).
+  final double referenceWidth = 411.42;
+  final double referenceHeight = 867.42;
 
   LocationIndicatorPainter(
       {required this.ssid,
@@ -33,14 +36,16 @@ class LocationIndicatorPainter extends CustomPainter {
       required this.screenHeight});
 
   Offset? _calculatePositionFromWifi(String? ssid) {
-    if (ssid == null || ssid == 'Nome desconhecido') {
+    if (ssid == null || ssid == 'Null') {
       return null;
     }
 
-    if (ssid == 'b4:2d:56:ec:36:a1') {
+    print("ssid: $ssid");
+
+    if (ssid == 'b4:2d:56:ec:39:81') {
       // XXIA ANDAR 2
       return const Offset(135, 500);
-    } else if (ssid == 'd8:84:66:d6:f9:29') {
+    } else if (ssid == 'b4:2d:56:f0:e4:e1') {
       // XXIA TERREO
       return const Offset(135, 500);
     } else if (ssid == 'b4:2d:56:f0:ef:e1') {
@@ -65,6 +70,12 @@ class LocationIndicatorPainter extends CustomPainter {
     return null;
   }
 
+  Offset scaleOffset(Offset offset) {
+    double scaleX = screenWidth / referenceWidth;
+    double scaleY = screenHeight / referenceHeight;
+    return Offset(offset.dx * scaleX, offset.dy * scaleY);
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     if (ssid == null) return;
@@ -82,7 +93,7 @@ class LocationIndicatorPainter extends CustomPainter {
 
     // Desenha o círculo central
     canvas.drawCircle(
-      position,
+      scaleOffset(position),
       circleRadius,
       circlePaint,
     );
@@ -94,7 +105,7 @@ class LocationIndicatorPainter extends CustomPainter {
 
     // Desenha o anel externo
     canvas.drawCircle(
-      position,
+      scaleOffset(position),
       outerRingRadius,
       ringPaint,
     );
